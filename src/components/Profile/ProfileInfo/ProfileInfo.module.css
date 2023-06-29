@@ -1,0 +1,14 @@
+.item{
+    color:lawngreen;
+}
+
+.item.golden{
+    color:gold;
+}
+.item img{
+    width: 100px;
+    height: 100px;
+}
+.profile{
+    color: black;
+}

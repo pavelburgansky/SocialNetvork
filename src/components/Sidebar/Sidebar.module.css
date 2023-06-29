@@ -1,0 +1,21 @@
+.aside{
+    grid-area: aside;
+    background-color: coral;
+}
+.item a{
+    color:white;
+}
+a.activeLink{
+    color:gold;
+
+}
+.inlinefriends{
+    display:inline-block;
+    padding: 2px;
+}
+.item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 2px solid red;
+}
