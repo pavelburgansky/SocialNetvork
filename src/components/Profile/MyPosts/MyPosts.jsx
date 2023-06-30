@@ -3,23 +3,7 @@ import classes from './MyPosts.module.css'
 import Post from './Post/Post'
 import {addPost, updateNewPostText} from '../../../redux/profileReducer'
 import { useDispatch, useSelector } from 'react-redux'
-// const postsData = [
-//     {
-//         id:1,
-//         message:'Приветикс',
-//         likePost:0     
-//     },
-//     {
-//         id:2,
-//         message:'Здарова вуй',
-//         likePost:30 
-//     },
-//     {               
-//         id:3,
-//         message:'Здарова Стээээс',
-//         likePost:777 
-//     }
-// ]
+
 const MyPosts = (props) => {
     
     const dispatch = useDispatch()
