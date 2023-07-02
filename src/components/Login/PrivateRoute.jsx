@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthProvider';
-import { Route, Navigate } from 'react-router-dom';
-const PrivateRoute = ({ element, ...rest }) => {
-    debugger
-  const isLoggedIn = useContext(AuthContext);
-
-  return isLoggedIn ? (
-    <Navigate to="/login" />
-  ) : (
-    <Route {...rest} element={element} />
-  );
-};
+import { Navigate } from 'react-router-dom';
+debugger
+const PrivateRoute = ({children}) => {
+  const isLoggedIn = useContext(AuthContext)
+  debugger
+  return isLoggedIn ? <Navigate to="/login" /> : <>{children}</>;
+}
 export default PrivateRoute;

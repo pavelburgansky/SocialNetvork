@@ -1,7 +1,5 @@
 import React from 'react'
-
-
-const AppRouter = () => {
+const AllPrivate = () => {
     return (
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />

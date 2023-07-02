@@ -10,6 +10,7 @@ import DialogContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContiner";
 import Login from "./components/Login/Login";
 import { AuthProvider } from "./components/Login/AuthProvider";
+import PrivateRoute from "./components/Login/PrivateRoute";
 const App = (props) => {
   debugger;
   return (
@@ -20,9 +21,31 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <AuthProvider>
             <Routes>
-              <Route path="/profile/:userId" element={<ProfileContainer />} />
-              <Route path="/profile/" element={<ProfileContainer />} />
-              <Route path="/dialogs/*" element={<DialogContainer />} />
+              <Route
+                path="/profile/:userId"
+                element={
+                  <PrivateRoute>
+                    <ProfileContainer />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/profile/"
+                element={
+                  <PrivateRoute>
+                    <ProfileContainer />
+                  </PrivateRoute>
+                }
+              />
+
+              <Route
+                path="/dialogs/*"
+                element={
+                  <PrivateRoute>
+                    <DialogContainer />
+                  </PrivateRoute>
+                }
+              />
               <Route path="/users" element={<Users />} />
               <Route path="/login" element={<Login />} />
             </Routes>

@@ -5,6 +5,7 @@ import { Route, Navigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
+  debugger
   const [isLoggedIn, setIsLoggedIn] = useState(false);
     const checkAuthentication = 
     async () => {
@@ -13,10 +14,13 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.get(url, { withCredentials: true })
       setIsLoggedIn(response.data.resultCode)
     }
+    
   React.useEffect(()=>{
     checkAuthentication();
-},[])
+},[]) 
+debugger
   return (
+   
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       {children}
     </AuthContext.Provider>
