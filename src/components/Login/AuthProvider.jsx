@@ -12,12 +12,12 @@ export const AuthProvider = ({ children }) => {
       debugger
       let url = "https://social-network.samuraijs.com/api/1.0/auth/me";
       const response = await axios.get(url, { withCredentials: true })
-      setIsLoggedIn(response.data.resultCode)
+      setIsLoggedIn(response.data.resultCode===0)
     }
     
   React.useEffect(()=>{
     checkAuthentication();
-},[]) 
+}) 
 debugger
   return (
    

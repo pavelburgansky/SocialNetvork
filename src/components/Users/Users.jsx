@@ -27,8 +27,8 @@ let Users = (props)=>{
     const currentPage = useSelector((state) => state.usersPage.currentPage)
     const followingInProgress = useSelector(state=>state.usersPage.followingInProgress)
     const isFetching = useSelector(state=>state.usersPage.isFetching)
-
-
+    let{a} = {a:5,b:'qwe'}
+    console.log(a);
   //const [isFetching,setIsFetching] = useState(true)
   
   //const ifFetchingRef = React.useRef(isFetching)
