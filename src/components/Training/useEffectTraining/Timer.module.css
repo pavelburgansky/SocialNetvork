@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.timerCaption {
+    margin-bottom: 20px;
+}
+.settingsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.controls {
+    display: flex;
+    gap: 10px;
+}
+.timerModes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.time {
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+}
