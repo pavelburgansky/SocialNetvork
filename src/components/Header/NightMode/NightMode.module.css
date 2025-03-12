@@ -1,0 +1,31 @@
+.toggle-button{
+width: 80px;
+height: 40px;
+border: 1px solid gray;
+border-radius: 15px;
+position: relative;
+background: gray;
+transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.toggle-button:hover{
+    background: rgb(83, 82, 82);
+}
+.toggle-button .thumb{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    border: 1px solid #123;
+    border-radius: 50%;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.5s ease-in-out;
+    left:10%;
+}
+.toggle-button.toggled{
+    background-color: rgb(32, 151, 32);
+}
+.toggle-button.toggled .thumb{
+    left: calc(100% - 40%);
+}

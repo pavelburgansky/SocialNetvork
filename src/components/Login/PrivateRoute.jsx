@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from './AuthProvider';
 import { Navigate } from 'react-router-dom';
-debugger
-const PrivateRoute = ({children}) => {
-  const {isLoggedIn} = useContext(AuthContext)
-  debugger
-  return (isLoggedIn ?<>{children}</>:<Navigate to="/login" /> )
-}
+
+const PrivateRoute = ({ children }) => {
+  const { isLoggedIn, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return <div>Loading...</div>; // Можно заменить на спиннер или skeleton-загрузку
+  }
+
+  return isLoggedIn ? <>{children}</> : <Navigate to="/login" />;
+};
+
 export default PrivateRoute;

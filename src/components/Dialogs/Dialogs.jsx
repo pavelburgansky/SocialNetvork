@@ -19,11 +19,6 @@ const Dialogs = (props) => {
     let dialogElem = state.dialogData.map(el => <DialogItem name={el.name} id={el.id} img={el.img} />)
     let messageElem = state.messagesData.map(el => <Message message={el.message} />)
     let newMessageText = state.newMessageText
-    // useEffect(()=>{
-    //     if(isLogin === 1){
-    //     return navigate("/login")
-    // }
-    // }, [isLogin])
 
     return (
         <div className={classes.dialogs}>

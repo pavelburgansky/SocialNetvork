@@ -7,10 +7,8 @@ const DialogsContainer = (props) => {
     const dispatch = useDispatch();
     const auth = useSelector((state) => state.messagespage)
     
-    let submitMessage = () => {
-        
+    let submitMessage = () => {   
         dispatch(addMessageActionCreator())
-
     }
     let onMessageChange = (text) => {
 

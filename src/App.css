@@ -1,16 +1,33 @@
-.app-wrapper{
+ @import './components/theme/theme.css';
+.app-wrapper {
   display: grid;
-  grid-template-columns:200px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-template-rows: 100px 1fr 100px;
-  grid-gap:5px;
+  grid-gap: 5px;
   grid-template-areas:
-  "header header"
-  "aside main"
-  "footer footer";
+    "header header"
+    "aside main"
+    "footer footer";
+  min-height: 100vh; /* Заполняем всю высоту экрана */
 }
+
 .app-wrapper-content{
   grid-area: main;
-  background-color: mediumturquoise;
+  background-color: var(--bg-color);
 }
-
-
+button{
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-color);
+  background: linear-gradient(135deg, #1f45c3, #523576);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+  color:#fff
+}
+button:hover{
+  transform: scale(1.05);
+}

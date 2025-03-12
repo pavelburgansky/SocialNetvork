@@ -5,7 +5,6 @@ const setActive = ({ isActive }) => isActive ? classes.activeLink : '';
 
 export default function Sidebar() { 
     return (
-       
         <aside className={classes.aside}>
             <div className={classes.item}>
                 <NavLink to='/profile' className={setActive}>Profile</NavLink>
@@ -15,6 +14,9 @@ export default function Sidebar() {
             </div>
             <div className={classes.item}>
                 <NavLink to='/users' className={setActive}>Users</NavLink>
+            </div>
+            <div className={classes.item}>
+                <NavLink to='/training' className={setActive}>Training</NavLink>
             </div>
             <div className={classes.item}>
                 <a>News</a>

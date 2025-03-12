@@ -9,6 +9,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import {setProfileData, toggleIsFetching} from '../../redux/profileReducer'
 import { getProfile } from '../../redux/profileReducer'
 const ProfileContiner = (props)=>{
+    debugger
     let {userId} = useParams()
     if (!userId){
         userId=2

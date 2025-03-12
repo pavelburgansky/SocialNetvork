@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
-import Profile from "./components/Profile/Profile";
 import Footer from "./components/Footer/Footer";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Users from "./components/Users/Users";
@@ -11,11 +10,13 @@ import ProfileContainer from "./components/Profile/ProfileContiner";
 import Login from "./components/Login/Login";
 import { AuthProvider } from "./components/Login/AuthProvider";
 import PrivateRoute from "./components/Login/PrivateRoute";
-const App = (props) => {
-  debugger;
+import Training from './components/Training/Training'
+import { ThemeProvider } from "./components/theme/Theme";
+const App = () => {
   return (
     <BrowserRouter>
-      <div className="app-wrapper">
+    <ThemeProvider>
+       <div className="app-wrapper">
         <Header />
         <Sidebar />
         <div className="app-wrapper-content">
@@ -45,6 +46,7 @@ const App = (props) => {
                   </PrivateRoute>
                 }
               />
+              <Route path="/training" element={<Training/>}/>
               <Route path="/users" element={<Users />} />
               <Route path="/login" element={<Login />} />
             </Routes>
@@ -52,6 +54,7 @@ const App = (props) => {
         </div>
         <Footer />
       </div>
+    </ThemeProvider>  
     </BrowserRouter>
   );
 };

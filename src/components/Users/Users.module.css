@@ -9,10 +9,15 @@
 .grey{
     background: gray;
 }
+.pageNumber{
+    color:var(--text-color);
+}
 .selectedPage{
     color:gold
 }
 .curs{
     cursor:pointer;
-    
+}
+.username{
+    color:var(--text-color);
 }

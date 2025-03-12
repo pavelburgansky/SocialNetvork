@@ -1,5 +1,5 @@
 .item{
-    color:lawngreen;
+    color:var(--text-color);
 }
 
 .item.golden{
@@ -10,5 +10,5 @@
     height: 100px;
 }
 .profile{
-    color: black;
+    color: var(--text-color);
 }

@@ -1,10 +1,52 @@
-.header{
+.header {
     grid-area: header;
-    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.header img{
+
+.header img {
     width: 50px;
+    transition: transform 0.3s ease-in-out;
 }
-.loginBlock{
-    float: right;
+
+.header img:hover {
+    transform: scale(1.1);
 }
+
+.loginBlock {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.loginBlock p {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: color 0.3s ease-in-out;
+}
+
+.loginBlock a, .logoutButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    color:#fff
+}
+
+.loginBlock a:hover, .logoutButton:hover {
+    background: linear-gradient(135deg, #5a7be5, #905dd6);
+    transform: scale(1.05);
+}
+
