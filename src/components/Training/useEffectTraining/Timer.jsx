@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import classes from './Timer.module.css'
-function Timer({ interalValue, startStop }) {
+
+function Timer({ interalValue, startStop, reset }) {
     const [value, setValue] = useState(0)
+    let intervalId
+    useEffect(() => {
+        if (reset) {
+            setValue(0)
+        }
+    }, [reset])
 
     useEffect(() => {
         if (startStop) {
-            const intervalId = setInterval(() => setValue(value => value + 1), interalValue)
+            intervalId = setInterval(() => setValue(value => value + 1), interalValue)
             return () => clearInterval(intervalId)
         }
     }, [interalValue, startStop])

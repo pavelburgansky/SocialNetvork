@@ -5,8 +5,8 @@ import classes from './Timer.module.css'
 function UseEffectTraining() {
   const [interalValue, setIntervalValue] = useState()
   const [startStop, setStartStop] = useState(false)
-  const [timerKey, setTimerKey] = useState(0)
-  
+  const [reset, setReset] = useState(false)
+
   const handleClick = (ms) => {
       setIntervalValue(ms)
   }
@@ -17,14 +17,15 @@ function UseEffectTraining() {
 
   const resetTimer = () => {
       setStartStop(false)
-      setTimerKey(prevKey => prevKey + 1)
+      setReset(true)
+      setTimeout(() => setReset(false), 0) // Сбрасываем флаг reset после рендера
   }
 
   return (
       <div className={classes.wrapper}>
           <h1 className={classes.timerCaption}>Timer</h1>
           <div className={classes.settingsContainer}>
-              <Timer key={timerKey} interalValue={interalValue} startStop={startStop} />
+              <Timer interalValue={interalValue} startStop={startStop} reset={reset} />
               <div className={classes.controls}>
                   <Button onClick={startStopToggle}>
                       {startStop ? <p>stop</p> : <p>start</p>}
@@ -41,5 +42,6 @@ function UseEffectTraining() {
       </div>
   )
 }
+
 
 export default UseEffectTraining
