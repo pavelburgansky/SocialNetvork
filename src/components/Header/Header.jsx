@@ -24,6 +24,7 @@ export default function Header() {
       <div className={classes.loginBlock}>
         <NightMode/>
         {isLogin ? (
+          console.log(login),
           <div>
             <p>{login}</p>
             <LogoutItem />

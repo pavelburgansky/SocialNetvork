@@ -6,13 +6,13 @@ import { useEffect } from 'react'
 import Preloader from '../common/Preloader/Preloader'
 import { useParams } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
-import {setProfileData, toggleIsFetching} from '../../redux/profileReducer'
 import { getProfile } from '../../redux/profileReducer'
-const ProfileContiner = (props)=>{
+const ProfileContiner = ()=>{
+    let userIdFromState = useSelector((state)=>state.auth.id) 
     debugger
     let {userId} = useParams()
     if (!userId){
-        userId=2
+        userId=userIdFromState
     }
     let dispatch = useDispatch()
     let profileData = useSelector((state)=>state.profile.profileData)
@@ -20,6 +20,7 @@ const ProfileContiner = (props)=>{
     useEffect(()=>{
         dispatch(getProfile({userId}))
         },[dispatch,userId])
+    
     return(
        <div className={classes.profile}>
          {isFetching ? <Preloader/> : null} 

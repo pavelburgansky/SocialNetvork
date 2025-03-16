@@ -11,28 +11,20 @@ let initialState = {
 
 // ✅ 1. Thunk для авторизации пользователя
 export const authentificationUser = createAsyncThunk(
-  "auth/fetchUser",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(
-        "https://social-network.samuraijs.com/api/1.0/auth/me",
-        { withCredentials: true }
-      );
-
-      if (response.data.resultCode !== 0) {
-        return rejectWithValue("Пользователь не авторизован");
+  "auth/authentificationUser",
+  async (_, {rejectWithValue}) => {
+    try{
+      const response = await axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {withCredentials: true})
+      if(response.data.resultCode !== 0){
+        return rejectWithValue(response.data.messages[0] || "Ошибка авторизации");
       }
-
-      return {
-        email: response.data.data.email,
-        id: response.data.data.id,
-        login: response.data.data.login,
-      };
-    } catch (error) {
+      return {email: response.data.data.email, id: response.data.data.id, login: response.data.data.login}
+    }
+    catch(error){
       return rejectWithValue(error.message || "Ошибка запроса");
     }
   }
-);
+)
 
 // ✅ 2. Thunk для логина
 export const loginUser = createAsyncThunk(
@@ -79,27 +71,37 @@ export const logout = createAsyncThunk(
 );
 
 const authSlice = createSlice({
-  name: "auth",
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
+    name: "auth",
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
     builder
-      // ✅ 4. Обрабатываем authentificationUser (авторизацию)
-      .addCase(authentificationUser.pending, (state) => {
-        state.error = null;
-      })
-      .addCase(authentificationUser.fulfilled, (state, action) => {
-        state.id = action.payload.id;
-        state.email = action.payload.email;
-        state.login = action.payload.login;
-        state.isLogin = true;
-      })
-      .addCase(authentificationUser.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isLogin = false;
-      })
+      // authentificationUser
+      .addCase(
+        authentificationUser.pending,
+        (state) => {
+          state.error = null;
+        }
+      )
+      .addCase(
+        authentificationUser.fulfilled,
+        (state, action) => {
+          state.id = action.payload.id;
+          state.email = action.payload.email;
+          state.login = action.payload.login;
+          state.isLogin = true;
+        }
 
-      // ✅ 5. Обрабатываем loginUser
+      )
+      .addCase(
+        authentificationUser.rejected,
+        (state, action) => {
+          state.error = action.payload;
+          state.isLogin = false;
+        }
+      )
+
+      // Обрабатываем loginUser
       .addCase(loginUser.pending, (state) => {
         state.error = null;
       })
@@ -114,7 +116,7 @@ const authSlice = createSlice({
         state.isLogin = false;
       })
 
-      // ✅ 6. Обрабатываем logoutUser
+      // Обрабатываем logoutUser
       .addCase(logout.fulfilled, (state) => {
         state.id = null;
         state.email = null;

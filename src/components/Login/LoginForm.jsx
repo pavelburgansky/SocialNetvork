@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginForm.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/authReducer";
@@ -10,18 +10,21 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Получаем ошибку из state
+  const isLogin = useSelector((state) => state.auth.isLogin);
   const error = useSelector((state) => state.auth.error);
+
+  useEffect(() => {
+    if (isLogin) {
+      navigate("/profile");
+    }
+  }, [isLogin]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) return;
 
-    const result = await dispatch(loginUser({ email, password }));
-
-    if (loginUser.fulfilled.match(result)) {
-      navigate("/profile"); // Перенаправляем в профиль после успешного входа
-    }
+    // Отправка запроса на логин
+    dispatch(loginUser({ email, password }));
   };
 
   return (
@@ -29,6 +32,7 @@ export const LoginForm = () => {
       <form onSubmit={handleSubmit} className="login-form">
         <h2>Вход</h2>
 
+        {/* Отображение ошибки если есть */}
         {error && <p className="error-message">{error}</p>}
 
         <div className="input-group">
